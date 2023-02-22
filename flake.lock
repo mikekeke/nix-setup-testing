@@ -7584,7 +7584,7 @@
     "nix_9": {
       "inputs": {
         "lowdown-src": "lowdown-src_9",
-        "nixpkgs": "nixpkgs_34",
+        "nixpkgs": "nixpkgs_33",
         "nixpkgs-regression": "nixpkgs-regression_9"
       },
       "locked": {
@@ -9548,20 +9548,6 @@
     },
     "nixpkgs_33": {
       "locked": {
-        "lastModified": 1677050843,
-        "narHash": "sha256-3fcFxn58eCtrXrVPeW/nAg6NR5wUERVEf8zOtjPDzuM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9e0eed654c705c7cafe192a8eba1610217f70544",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_34": {
-      "locked": {
         "lastModified": 1632864508,
         "narHash": "sha256-d127FIvGR41XbVRDPVvozUPQ/uRHbHwvfyKHwEt5xFM=",
         "owner": "NixOS",
@@ -10685,7 +10671,10 @@
           "plutip",
           "haskell-nix"
         ],
-        "nixpkgs": "nixpkgs_33",
+        "nixpkgs": [
+          "cardano-transaction-lib",
+          "nixpkgs"
+        ],
         "plutip": "plutip_2"
       }
     },

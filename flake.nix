@@ -12,7 +12,7 @@
 
     plutip.url = github:mlabs-haskell/plutip/8364c43ac6bc9ea140412af9a23c691adf67a18b;
     cardano-transaction-lib.url = github:Plutonomicon/cardano-transaction-lib/v4.0.0;
-    # nixpkgs.follows = "cardano-transaction-lib/nixpkgs";
+    nixpkgs.follows = "cardano-transaction-lib/nixpkgs";
     haskell-nix.follows = "plutip/haskell-nix";
   };
 
