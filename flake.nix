@@ -11,7 +11,7 @@
     # cardano-transaction-lib.inputs.nixpkgs.follows = "plutip/nixpkgs";
 
     plutip.url = github:mlabs-haskell/plutip/8364c43ac6bc9ea140412af9a23c691adf67a18b;
-    cardano-transaction-lib.url = github:Plutonomicon/cardano-transaction-lib/v4.0.0;
+    cardano-transaction-lib.url = github:Plutonomicon/cardano-transaction-lib/v5.0.0;
     nixpkgs.follows = "cardano-transaction-lib/nixpkgs";
     haskell-nix.follows = "plutip/haskell-nix";
   };
@@ -183,9 +183,7 @@
                 nodePackages.eslint
                 nodePackages.prettier
                 ogmios
-                ogmios-datum-cache
                 plutip-server
-                postgresql
               ];
               shellHook =
                 ''
