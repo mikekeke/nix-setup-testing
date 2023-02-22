@@ -1,12 +1,21 @@
-{ name = "ctl-multisign-mre-offchain"
+{-
+Welcome to a Spago project!
+You can edit this file as you like.
+-}
+{ name = "ctl-package-example"
 , dependencies =
-  [ "bigints"
+  [ "aff"
+  , "bigints"
   , "cardano-transaction-lib"
+  , "datetime"
+  , "effect"
+  , "mote"
   , "ordered-collections"
+  , "posix-types"
   , "prelude"
-  , "record"
+  , "spec"
   , "uint"
   ]
 , packages = ./packages.dhall
-, sources = [ "src/**/*.purs" ]
+, sources = [ "src/**/*.purs", "exe/**/*.purs", "test/**/*.purs" ]
 }

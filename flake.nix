@@ -1,19 +1,19 @@
 {
   inputs = {
-    plutip.url = github:mlabs-haskell/plutip/8364c43ac6bc9ea140412af9a23c691adf67a18b;
-    bot-plutus-interface.url = github:mlabs-haskell/bot-plutus-interface/7235aa6fba12b0cf368d9976e1e1b21ba642c038;
-    bot-plutus-interface.inputs.cardano-wallet.url = github:sadMaxim/cardano-wallet/9d34b2633ace6aa32c1556d33c8c2df63dbc8f5b;
-    plutip.inputs.bot-plutus-interface.follows = "bot-plutus-interface";
-    plutip.inputs.haskell-nix.follows = "bot-plutus-interface/haskell-nix";
-    plutip.inputs.iohk-nix.follows = "bot-plutus-interface/iohk-nix";
-    plutip.inputs.nixpkgs.follows = "bot-plutus-interface/nixpkgs";
-    cardano-transaction-lib.url = github:Plutonomicon/cardano-transaction-lib/v2.0.0;
-    cardano-transaction-lib.inputs.plutip.follows = "plutip";
-    cardano-transaction-lib.inputs.haskell-nix.follows = "plutip/haskell-nix";
-    cardano-transaction-lib.inputs.nixpkgs.follows = "plutip/nixpkgs";
+    # bot-plutus-interface.url = github:mlabs-haskell/bot-plutus-interface/7235aa6fba12b0cf368d9976e1e1b21ba642c038;
+    # bot-plutus-interface.inputs.cardano-wallet.url = github:sadMaxim/cardano-wallet/9d34b2633ace6aa32c1556d33c8c2df63dbc8f5b;
+    # plutip.inputs.bot-plutus-interface.follows = "bot-plutus-interface";
+    # plutip.inputs.haskell-nix.follows = "bot-plutus-interface/haskell-nix";
+    # plutip.inputs.iohk-nix.follows = "bot-plutus-interface/iohk-nix";
+    # plutip.inputs.nixpkgs.follows = "bot-plutus-interface/nixpkgs";
+    # cardano-transaction-lib.inputs.plutip.follows = "plutip";
+    # cardano-transaction-lib.inputs.haskell-nix.follows = "plutip/haskell-nix";
+    # cardano-transaction-lib.inputs.nixpkgs.follows = "plutip/nixpkgs";
 
-    nixpkgs.follows = "cardano-transaction-lib/nixpkgs";
-    haskell-nix.follows = "cardano-transaction-lib/haskell-nix";
+    plutip.url = github:mlabs-haskell/plutip/8364c43ac6bc9ea140412af9a23c691adf67a18b;
+    cardano-transaction-lib.url = github:Plutonomicon/cardano-transaction-lib/v4.0.0;
+    # nixpkgs.follows = "cardano-transaction-lib/nixpkgs";
+    haskell-nix.follows = "plutip/haskell-nix";
   };
 
   outputs = inputs@{ self, nixpkgs, haskell-nix, cardano-transaction-lib, plutip, ... }:
@@ -27,7 +27,7 @@
         inherit system;
         overlays = [
           haskell-nix.overlay
-          cardano-transaction-lib.overlays.ctl-server
+          # cardano-transaction-lib.overlays.ctl-server
           cardano-transaction-lib.overlays.purescript
           cardano-transaction-lib.overlays.runtime
         ];
@@ -177,7 +177,7 @@
               packageLockOnly = true;
               packages = with pkgs; [
                 bashInteractive
-                ctl-server
+                # ctl-server
                 docker
                 fd
                 nodePackages.eslint
@@ -230,6 +230,7 @@
       });
 
       apps = perSystem (system: {
+        default-ctl-runtime = (nixpkgsFor system).launchCtlRuntime { };
         docs = self.offchain.project.${system}.launchSearchablePursDocs { };
         ctl-docs = cardano-transaction-lib.apps.${system}.docs;
         script-exporter = {
